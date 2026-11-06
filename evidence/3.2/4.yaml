@@ -1,0 +1,21 @@
+# my 1000 uid has been appended to the container, so the values passed by -f did overwrite it
+ 
+nwafdes@controlplane:~/helm-lab/charts/tamhub-api$ k exec tamhub-tamhub-api-5b6845465d-8xp7l -n tamhub-dev -- id
+uid=1000 gid=0(root) groups=0(root)
+            value: dev
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+              - ALL
+            readOnlyRootFilesystem: true
+            runAsNonRoot: true
+            runAsUser: 1000
+          resources:
+            limits:
+              cpu: 200m
+              memory: 128Mi
+            requests:
+              cpu: 50m
+              memory: 64Mi
+# you quesiton is vauge runas won't create a user or map it in /etc/passwd, and also will not assign /home/nwafdes not sure what do you mean

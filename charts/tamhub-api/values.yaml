@@ -1,4 +1,4 @@
-replicaCount: 3
+replicaCount: 2
 image:
   repository: ghcr.io/stefanprodan/podinfo
   tag: ""
@@ -7,7 +7,7 @@ service:
   # This sets the service type more information can be found here: https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types
   type: ClusterIP
   # This sets the ports more information can be found here: https://kubernetes.io/docs/concepts/services-networking/service/#field-spec-ports
-  port: 9898
+  port: 80 
 # This is to setup the liveness and readiness probes more information can be found here: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
 livenessProbe:
   httpGet:
@@ -24,9 +24,7 @@ app:
 env:
   TAMHUB_REGION: "riyadh"
 
-config:           # non-secret settings → ConfigMap → envFrom
-  key: value
-  key2: value3
+config: {}          # non-secret settings → ConfigMap → envFrom
 secret:
   existingSecret: ""  # if set: use this Secret, create none
   apiKey: ""          # used only when existingSecret is empty

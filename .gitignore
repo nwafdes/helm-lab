@@ -1,0 +1,5 @@
+values-secret*.yaml
+*.key
+*.pem
+kubeconfig*
+*.tgz

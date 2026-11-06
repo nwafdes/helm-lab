@@ -24,7 +24,7 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           ports:
             - name: http
-              containerPort: {{ .Values.service.port }}
+              containerPort: 9898
               protocol: TCP
           {{- with .Values.livenessProbe }}
           livenessProbe:
@@ -61,11 +61,12 @@ spec:
           {{- with .Values.extraEnv }}
             {{- toYaml . | nindent 10 }}
           {{- end }}
+
+          {{- with .Values.securityContext }}
           securityContext:
-            {{- with .Values.securityContext }}
-              {{- toYaml . | nindent 12 }}
-            {{- end }}
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- with .Values.resources }}
           resources:
-            {{- with .Values.resources }}
-              {{- toYaml . | nindent 12 }}
-            {{- end }}
+            {{- toYaml . | nindent 12 }}
+          {{- end }}

@@ -1,8 +1,8 @@
+env:
+  TAMHUB_ENV: "dev"
 app:
   message: "Dev environment"
-extraEnv:
-  - name: "TAMHUB_ENV"
-    value: "dev"
+extraEnv: []
 config:
   TAMHUB_LOG_LEVEL: debug
   TAMHUB_MAX_CONN: 10          # a number, on purpose

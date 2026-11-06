@@ -1,0 +1,4 @@
+# yes i kept key1=value1 what am i suppose to pass here do you want me to delete them?
+# i hae set {} instead so when customer pass something he can find it
+# as you can see nothig nwafdes@controlplane:~/helm-lab/charts/tamhub-api$ grep -i 'hello from Tamhub' ../../../ --recursive
+../../../helm-lab/charts/tamhub-api/values.yaml:  message: Hello From Tamhub
