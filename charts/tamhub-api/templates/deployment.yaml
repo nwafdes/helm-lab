@@ -1,0 +1,71 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "tamhub-api.fullname" . }}
+  labels:
+    {{- include "tamhub-api.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "tamhub-api.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      annotations:
+        checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
+      labels:
+        {{- include "tamhub-api.labels" . | nindent 8 }}
+        {{- with .Values.podLabels }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          ports:
+            - name: http
+              containerPort: {{ .Values.service.port }}
+              protocol: TCP
+          {{- with .Values.livenessProbe }}
+          livenessProbe:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- with .Values.readinessProbe }}
+          readinessProbe:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          envFrom:
+            - configMapRef:
+                name: {{ include "tamhub-api.fullname" . }}
+          env:
+          - name: PODINFO_UI_MESSAGE
+            value: {{ .Values.app.message | quote }}
+          - name: PODINFO_UI_COLOR 
+            value: {{ .Values.app.color | quote }}
+          - name: TAMHUB_API_KEY
+            {{- if .Values.secret.existingSecret}}
+            valueFrom:
+              secretKeyRef: 
+                key: api-key
+                name: {{ .Values.secret.existingSecret }}
+            {{- else }}
+            valueFrom:
+              secretKeyRef: 
+                key: api-key
+                name: {{ include "tamhub-api.fullname" . }}-secret
+            {{- end }}
+          {{- range $name, $value := .Values.env }} 
+          - name: {{ $name | quote }}
+            value: {{ $value | quote }}
+          {{- end }}
+          {{- with .Values.extraEnv }}
+            {{- toYaml . | nindent 10 }}
+          {{- end }}
+          securityContext:
+            {{- with .Values.securityContext }}
+              {{- toYaml . | nindent 12 }}
+            {{- end }}
+          resources:
+            {{- with .Values.resources }}
+              {{- toYaml . | nindent 12 }}
+            {{- end }}

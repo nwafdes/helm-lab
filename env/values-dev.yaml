@@ -1,0 +1,16 @@
+app:
+  message: "Dev environment"
+extraEnv:
+  - name: "TAMHUB_ENV"
+    value: "dev"
+config:
+  TAMHUB_LOG_LEVEL: debug
+  TAMHUB_MAX_CONN: 10          # a number, on purpose
+resources:
+  requests: {cpu: 50m, memory: 64Mi}
+  limits: {memory: 128Mi}
+securityContext:
+  runAsNonRoot: true
+  allowPrivilegeEscalation: false
+  readOnlyRootFilesystem: true
+  capabilities: {drop: ["ALL"]}
