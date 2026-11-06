@@ -21,3 +21,8 @@
 .idea/
 *.tmproj
 .vscode/
+values-secret*.yaml
+*.pem.yaml
+*.key.yaml
+kubeconfig*.yaml
+*.tgz.yaml
