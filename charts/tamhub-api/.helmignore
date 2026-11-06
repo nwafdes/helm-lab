@@ -26,3 +26,4 @@ values-secret*.yaml
 *.key.yaml
 kubeconfig*.yaml
 *.tgz.yaml
+*.pem

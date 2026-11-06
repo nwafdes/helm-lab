@@ -19,7 +19,7 @@ readinessProbe:
     port: http
 extraEnv: []
 app:
-  message: "Hello From Tamhub"
+  message: "Welcome to Tamhub"
   color: "#34577c"    
 env:
   TAMHUB_REGION: "riyadh"
@@ -28,13 +28,7 @@ config: {}          # non-secret settings → ConfigMap → envFrom
 secret:
   existingSecret: ""  # if set: use this Secret, create none
   apiKey: ""          # used only when existingSecret is empty
-resources:
-  requests:
-    cpu: 100m
-    memory: 100Mi
-  limits:
-    cpu: 200m
-    memory: 200Mi
+resources: {}
 podSecurityContext: {}
 securityContext:
   runAsUser: 1000
