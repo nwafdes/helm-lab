@@ -1,0 +1,40 @@
+$ bash -c kubectl get secret -n tamhub-dev -l owner=helm,name=tamhub --sort-by=.metadata.creationTimestamp -o name | tail -1 | xargs kubectl get -n tamhub-dev -o jsonpath='{.data.release}' | base64 -d | base64 -d | gunzip | jq '{name, version, values: .config}'
+{
+  "name": "tamhub",
+  "version": 45,
+  "values": {
+    "app": {
+      "message": "Dev environment"
+    },
+    "config": {
+      "TAMHUB_LOG_LEVEL": "debug",
+      "TAMHUB_MAX_CONN": 10
+    },
+    "env": {
+      "TAMHUB_ENV": "dev"
+    },
+    "extraEnv": [],
+    "resources": {
+      "limits": {
+        "memory": "128Mi"
+      },
+      "requests": {
+        "cpu": "50m",
+        "memory": "64Mi"
+      }
+    },
+    "secret": {
+      "existingSecret": "tamhub-api-creds"
+    },
+    "securityContext": {
+      "allowPrivilegeEscalation": false,
+      "capabilities": {
+        "drop": [
+          "ALL"
+        ]
+      },
+      "readOnlyRootFilesystem": true,
+      "runAsNonRoot": true
+    }
+  }
+}
