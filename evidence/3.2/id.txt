@@ -1,0 +1,2 @@
+$ kubectl exec -n tamhub-dev deploy/tamhub-tamhub-api -- id
+uid=1000 gid=3000 groups=2000,3000

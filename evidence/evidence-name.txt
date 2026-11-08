@@ -1,2 +1,0 @@
-$ kubectl exec -n tamhub-dev deploy/tamhub-tamhub-api -- sh -c printenv TAMHUB_API_KEY | wc -c
-25

@@ -29,6 +29,8 @@ secret:
   existingSecret: ""  # if set: use this Secret, create none
   apiKey: ""          # used only when existingSecret is empty
 resources: {}
-podSecurityContext: {}
-securityContext:
+podSecurityContext: 
+  runAsGroup: 3000
+  fsGroup: 2000
   runAsUser: 1000
+securityContext: {}

@@ -1,2 +1,0 @@
-$ bash -c kubectl get secret tamhub-api-creds -n tamhub-dev -o yaml | grep meta.helm || echo 'no helm annotations'
-no helm annotations

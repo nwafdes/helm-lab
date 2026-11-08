@@ -1,0 +1,3 @@
+$ bash -c helm template tamhub charts/tamhub-api -f env/values-dev.yaml --set secret.existingSecret=tamhub-api-creds | kubectl apply --dry-run=server -n tamhub-dev -f -
+Error: repo charts not found
+error: no objects passed to apply
