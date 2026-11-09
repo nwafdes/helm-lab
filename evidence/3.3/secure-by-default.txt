@@ -1,0 +1,106 @@
+$ helm template tamhub -n tamhub-dev charts/tamhub-api --set secret.existingSecret=tamhub-api-creds
+---
+# Source: tamhub-api/templates/configmap.yaml
+apiVersion: v1
+data:
+kind: ConfigMap
+metadata:
+  name: tamhub-tamhub-api
+  labels:
+    helm.sh/chart: tamhub-api-0.1.0
+    app.kubernetes.io/name: tamhub-api
+    app.kubernetes.io/instance: tamhub
+    app.kubernetes.io/version: "6.15.0"
+    app.kubernetes.io/managed-by: Helm
+---
+# Source: tamhub-api/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: tamhub-tamhub-api
+  labels:
+    helm.sh/chart: tamhub-api-0.1.0
+    app.kubernetes.io/name: tamhub-api
+    app.kubernetes.io/instance: tamhub
+    app.kubernetes.io/version: "6.15.0"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  type: ClusterIP
+  ports:
+    - port: 80
+      targetPort: http 
+      protocol: TCP
+      name: http
+  selector:
+    app.kubernetes.io/name: tamhub-api
+    app.kubernetes.io/instance: tamhub
+---
+# Source: tamhub-api/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tamhub-tamhub-api
+  labels:
+    helm.sh/chart: tamhub-api-0.1.0
+    app.kubernetes.io/name: tamhub-api
+    app.kubernetes.io/instance: tamhub
+    app.kubernetes.io/version: "6.15.0"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: tamhub-api
+      app.kubernetes.io/instance: tamhub
+  template:
+    metadata:
+      annotations:
+        checksum/config: 9ae34c9e1fe16d8c972beabfd548dc7241275256af7a13108e55bff1937f13e2
+      labels:
+        helm.sh/chart: tamhub-api-0.1.0
+        app.kubernetes.io/name: tamhub-api
+        app.kubernetes.io/instance: tamhub
+        app.kubernetes.io/version: "6.15.0"
+        app.kubernetes.io/managed-by: Helm
+    spec:
+      securityContext:
+          fsGroup: 2000
+          runAsGroup: 3000
+          runAsUser: 1000
+      containers:
+        - name: tamhub-api
+          image: "ghcr.io/stefanprodan/podinfo:6.15.0"
+          ports:
+            - name: http
+              containerPort: 9898
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /readyz
+              port: http
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+              - ALL
+            readOnlyRootFilesystem: true
+            runAsNonRoot: true
+          envFrom:
+            - configMapRef:
+                name: tamhub-tamhub-api
+          env:
+          - name: PODINFO_UI_MESSAGE
+            value: "Welcome to Tamhub"
+          - name: PODINFO_UI_COLOR 
+            value: "#34577c"
+          - name: TAMHUB_API_KEY
+            valueFrom:
+              secretKeyRef: 
+                key: api-key
+                name: tamhub-api-creds 
+          - name: "TAMHUB_REGION"
+            value: "riyadh"

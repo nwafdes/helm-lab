@@ -33,4 +33,8 @@ podSecurityContext:
   runAsGroup: 3000
   fsGroup: 2000
   runAsUser: 1000
-securityContext: {}
+securityContext:
+  runAsNonRoot: true
+  allowPrivilegeEscalation: false
+  readOnlyRootFilesystem: true
+  capabilities: {drop: ["ALL"]}
