@@ -3,6 +3,8 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: {{ include "tamhub-api.fullname" . }}-ingress
+  labels:
+    {{- include "tamhub-api.labels" . | nindent 4 }}
 spec:
   ingressClassName: {{ .Values.ingress.className }}
   {{- if .Values.ingress.tls }}
@@ -13,13 +15,13 @@ spec:
   {{- end }}
   rules:
   - host: {{ required "ingress.host is required" .Values.ingress.host }}
-      http:
-        paths:
-        - backend:
-            service:
-              name: {{ include "tamhub-api.fullname" . }}-svc
-              port:
-                number: {{ .Values.service.port }}
-          path: {{ .Values.ingress.path }}
-          pathType: Prefix
+    http:
+      paths:
+      - backend:
+          service:
+            name: {{ include "tamhub-api.fullname" . }}-svc
+            port:
+              number: {{ .Values.service.port }}
+        path: {{ .Values.ingress.path }}
+        pathType: Prefix
 {{- end }}
