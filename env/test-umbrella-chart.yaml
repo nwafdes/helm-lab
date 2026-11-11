@@ -1,0 +1,6 @@
+ingress:
+  enabled: true
+  host: "acme.tamhub.local"
+
+secret:
+  existingSecret: test-umbrella

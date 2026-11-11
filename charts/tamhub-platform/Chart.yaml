@@ -1,0 +1,22 @@
+apiVersion: v2
+name: tamhub-platform
+description: An umbrella helm chart that deploys a fully functional app.
+type: application
+version: 0.1.0
+appVersion: 6.15.0
+dependencies:
+  - name: tamhub-api
+    version: "0.1.2"
+    repository: "file://./charts/tamhub-api"
+    alias: api-public
+    condition: api-public.enabled
+  - name: tamhub-api
+    version: "0.1.2"
+    repository: "file://./charts/tamhub-api"
+    alias: api-internal
+    condition: api-internal.enabled
+  - name: podinfo
+    version: "6.15.0"
+    repository: "oci://ghcr.io/stefanprodan/charts"
+    alias: podinfo
+    condition: podinfo.enabled

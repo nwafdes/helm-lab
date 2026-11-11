@@ -1,0 +1,23 @@
+global:
+  TAMHUB_REGION: "Majarda"
+
+api-public:
+  ingress:
+    enabled: true
+    host: "public.tamhub.local"
+  secret:
+    existingSecret: platform-secret
+  app:
+    message: "Public API" 
+
+api-internal:
+  secret:
+    existingSecret: platform-secret
+  app:
+    message: "Internal API"
+  replicaCount: 1
+
+podinfo:
+  ui:
+    message: "Platform frontend"
+  replicaCount: 1

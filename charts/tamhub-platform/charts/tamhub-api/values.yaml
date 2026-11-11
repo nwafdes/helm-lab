@@ -21,9 +21,7 @@ extraEnv: []
 app:
   message: "Welcome to Tawqit"
   color: "#34577c"    
-env:
-  TAMHUB_REGION: "riyadh"
-
+env: {}
 config: {}          # non-secret settings → ConfigMap → envFrom
 secret:
   existingSecret: ""  # if set: use this Secret, create none

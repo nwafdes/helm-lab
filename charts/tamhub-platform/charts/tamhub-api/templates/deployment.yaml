@@ -48,6 +48,8 @@ spec:
           env:
           - name: PODINFO_UI_MESSAGE
             value: {{ .Values.app.message | quote }}
+          - name: TAMHUB_REGION
+            value: {{ .global.TAMHUB_REGION }}
           - name: PODINFO_UI_COLOR 
             value: {{ .Values.app.color | quote }}
           - name: TAMHUB_API_KEY
