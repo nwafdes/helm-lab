@@ -19,7 +19,7 @@ readinessProbe:
     port: http
 extraEnv: []
 app:
-  message: "Welcome to Tamhub"
+  message: "Welcome to Tawqit"
   color: "#34577c"    
 env:
   TAMHUB_REGION: "riyadh"
