@@ -1,0 +1,15 @@
+$ bash -c helm lint charts/tamhub-api --set secret.existingSecret=x && tar -tzf dist/tamhub-api-0.1.2.tgz
+==> Linting charts/tamhub-api
+[INFO] Chart.yaml: icon is recommended
+
+1 chart(s) linted, 0 chart(s) failed
+tamhub-api/Chart.yaml
+tamhub-api/values.yaml
+tamhub-api/templates/NOTES.txt
+tamhub-api/templates/_helpers.tpl
+tamhub-api/templates/configmap.yaml
+tamhub-api/templates/deployment.yaml
+tamhub-api/templates/ingress.yaml
+tamhub-api/templates/secret.yaml
+tamhub-api/templates/service.yaml
+tamhub-api/.helmignore

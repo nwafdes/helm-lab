@@ -1,0 +1,2 @@
+$ bash -c curl -s -H 'Host: acme.tamhub.local' http://10.0.20.243:31540/ | jq -r .message
+Welcome to Tamhub
