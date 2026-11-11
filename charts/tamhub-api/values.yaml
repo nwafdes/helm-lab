@@ -39,8 +39,11 @@ securityContext:
   readOnlyRootFilesystem: true
   capabilities: {drop: ["ALL"]}
 ingress:
-  enabled: ""
+  enabled: false
   className: "nginx"
   host: ""
   path: "/"
-  tls: []
+  tls:
+    enabled: false
+    secretName: "" 
+

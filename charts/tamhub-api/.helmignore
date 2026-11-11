@@ -24,3 +24,4 @@
 *.pem
 kubeconfig*
 *.key
+values-secret*.yaml
