@@ -1,1 +1,13 @@
+The App {{ include "tamhub-api.fullname" . }} has been deployed
 
+{{- if .Values.ingress.enabled }}
+  since you enabled ingress you can access the application by visiting this address: 
+
+  "http://{{ .Values.ingress.host }}"
+
+{{- else }}
+  since you didn't enable ingress you can still access the application by running this command to do a port forward. 
+  "kubectl port-forward service/{{ include "tamhub-api.fullname" . }}-svc 9443:http"
+{{- end }}
+
+make sure you take a look at Charts/tamhub-api/values.yaml so you know what you need, if you want to directly run them app all you need is to deploy it by running `helm install <releasename>` and you'll get the app up and running
