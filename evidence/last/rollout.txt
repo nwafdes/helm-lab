@@ -1,0 +1,12 @@
+$ helm history platform -n tamhub-platform
+REVISION	UPDATED                 	STATUS    	CHART                	APP VERSION	DESCRIPTION     
+2       	Thu Nov 12 11:08:54 2026	superseded	tamhub-platform-0.1.0	6.15.0     	Upgrade complete
+3       	Thu Nov 12 11:11:30 2026	superseded	tamhub-platform-0.1.0	6.15.0     	Upgrade complete
+4       	Thu Nov 12 11:13:13 2026	superseded	tamhub-platform-0.1.0	6.15.0     	Upgrade complete
+5       	Thu Nov 12 11:17:48 2026	superseded	tamhub-platform-0.1.0	6.15.0     	Upgrade complete
+6       	Thu Nov 12 11:18:47 2026	superseded	tamhub-platform-0.1.0	6.15.0     	Upgrade complete
+7       	Thu Nov 12 11:29:10 2026	superseded	tamhub-platform-0.1.0	6.15.0     	Upgrade complete
+8       	Thu Nov 12 11:39:22 2026	superseded	tamhub-platform-0.1.0	6.15.0     	Rollback to 4   
+9       	Thu Nov 12 16:31:58 2026	superseded	tamhub-platform-0.1.0	6.15.0     	Rollback to 5   
+10      	Thu Nov 12 16:32:29 2026	superseded	tamhub-platform-0.1.0	6.15.0     	Rollback to 2   
+11      	Thu Nov 12 16:40:34 2026	deployed  	tamhub-platform-0.1.0	6.15.0     	Rollback to 2   
