@@ -1,0 +1,4 @@
+$ ls charts/tamhub-platform/charts/
+podinfo-6.15.0.tgz
+tamhub-api
+tamhub-api-0.1.2.tgz

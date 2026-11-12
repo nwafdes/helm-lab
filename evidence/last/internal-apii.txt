@@ -1,0 +1,14 @@
+$ kubectl exec test-internal -- wget -qO- platform-api-internal-svc.tamhub-platform
+{
+  "hostname": "platform-api-internal-667d87c667-pvks6",
+  "version": "6.15.0",
+  "revision": "dd507173b7b75b2312a36cabe0de5f09c1ce69c8",
+  "color": "#34577c",
+  "logo": "https://raw.githubusercontent.com/stefanprodan/podinfo/gh-pages/cuddle_clap.gif",
+  "message": "Internal API",
+  "goos": "linux",
+  "goarch": "arm64",
+  "runtime": "go1.27.0",
+  "num_goroutine": "6",
+  "num_cpu": "3"
+}

@@ -1,0 +1,3 @@
+$ helm list -n tamhub-platform
+NAME    	NAMESPACE      	REVISION	UPDATED                               	STATUS  	CHART                	APP VERSION
+platform	tamhub-platform	1       	2026-11-12 10:07:27.88056204 +0300 +03	deployed	tamhub-platform-0.1.0	6.15.0     

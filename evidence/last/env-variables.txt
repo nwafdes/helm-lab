@@ -1,0 +1,6 @@
+$ kubectl get pods -n tamhub-platform -o=custom-columns=POD_NAME:.metadata.name,TAMHUB_REGION:.spec.containers[].env[1].value
+POD_NAME                                 TAMHUB_REGION
+platform-api-internal-667d87c667-pvks6   Majarda
+platform-api-public-78c7997fdb-9wqg4     Majarda
+platform-api-public-78c7997fdb-wcmtx     Majarda
+platform-podinfo-c44c6b794-qtw95         #34577c

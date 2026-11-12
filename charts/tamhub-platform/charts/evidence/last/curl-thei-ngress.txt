@@ -1,0 +1,17 @@
+$ curl -H Host: public.tamhub.local 10.0.20.243:31540
+  % Total    % Received % Xferd  Average Speed  Time    Time    Time   Current
+                                 Dload  Upload  Total   Spent   Left   Speed
+  0      0   0      0   0      0      0      0                              0100    386 100    386   0      0 281.9k      0                              0100    386 100    386   0      0 274.3k      0                              0100    386 100    386   0      0 271.5k      0                              0
+{
+  "hostname": "platform-api-public-78c7997fdb-9wqg4",
+  "version": "6.15.0",
+  "revision": "dd507173b7b75b2312a36cabe0de5f09c1ce69c8",
+  "color": "#34577c",
+  "logo": "https://raw.githubusercontent.com/stefanprodan/podinfo/gh-pages/cuddle_clap.gif",
+  "message": "Public API",
+  "goos": "linux",
+  "goarch": "arm64",
+  "runtime": "go1.27.0",
+  "num_goroutine": "6",
+  "num_cpu": "2"
+}

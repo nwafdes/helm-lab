@@ -1,0 +1,5 @@
+$ kubectl get deployments.apps -n tamhub-platform -o=custom-columns=KIND:.kind,NAME:.metadata.name,IMAGE:.spec.template.spec.containers[].image
+KIND         NAME                    IMAGE
+Deployment   platform-api-internal   ghcr.io/stefanprodan/podinfo:6.15.0
+Deployment   platform-api-public     ghcr.io/stefanprodan/podinfo:6.15.0
+Deployment   platform-podinfo        ghcr.io/stefanprodan/podinfo:6.15.0

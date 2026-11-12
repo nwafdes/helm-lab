@@ -1,0 +1,6 @@
+$ helm dependency list charts/tamhub-platform/
+NAME      	VERSION	REPOSITORY                       	STATUS
+tamhub-api	0.1.2  	file://./charts/tamhub-api       	ok    
+tamhub-api	0.1.2  	file://./charts/tamhub-api       	ok    
+podinfo   	6.15.0 	oci://ghcr.io/stefanprodan/charts	ok    
+
