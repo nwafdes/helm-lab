@@ -21,3 +21,4 @@ podinfo:
   ui:
     message: "Platform frontend"
   replicaCount: 1
+  enabled: false
