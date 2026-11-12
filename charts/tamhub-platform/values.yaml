@@ -9,6 +9,7 @@ api-public:
     existingSecret: platform-secret
   app:
     message: "Public API" 
+    color: "#FFFDD0"
 
 api-internal:
   secret:
