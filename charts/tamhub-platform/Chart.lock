@@ -2,11 +2,11 @@ dependencies:
 - name: tamhub-api
   repository: file://./charts/tamhub-api
   version: 0.1.2
-- name: tamhub-api2
+- name: tamhub-api
   repository: file://./charts/tamhub-api
   version: 0.1.2
 - name: podinfo
   repository: oci://ghcr.io/stefanprodan/charts
   version: 6.15.0
-digest: sha256:3b19931a6d6527f1150a04db88d6db7de3ccb8d16f7094edaaef90c2ee4dfa66
-generated: "2026-11-11T16:09:22.577451507+03:00"
+digest: sha256:515a3243facafa373ededf2d6b24ae0f8bddbc64a81970dc3e141e528cd6a42b
+generated: "2026-11-12T11:14:10.512828613+03:00"
